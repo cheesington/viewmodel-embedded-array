@@ -1,12 +1,8 @@
 
-books = new Mongo.Collection('collectionName');  
+Books = new Mongo.Collection('books');  
 
-check(false, String); // remember to change collectionName above
 
-books.attachSchema(new SimpleSchema({
-	someField: {
-		type: String,
-		optional: true,
-	},
-}));
+
+
+
 

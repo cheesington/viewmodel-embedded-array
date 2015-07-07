@@ -1,9 +1,41 @@
 
 // Publish
 
+Meteor.startup(function() {
+
+	if (Books.find().count() === 0) { 
+		var book = {
+			name: "Rocking Out Vol 1",
+			authors: [{
+				firstName: "Svon",
+				lastName: "Jovi",
+			},
+			{
+				firstName: "Ben",
+				lastName: "Jovi",
+			}]
+		};
+
+		Books.insert(book);
+		book = {
+			name: "Rocking Out Vol 2",
+			authors: [{
+				firstName: "Pete",
+				lastName: "Seeeeeeeeger",
+			},
+			{
+				firstName: "Phil",
+				lastName: "Collins",
+			}]
+		};
+
+		Books.insert(book);
+	}
+});
+
 // Security
 
-books.allow({
+Books.allow({
 	insert: function (userId, doc) {
 		return false;
 	},
@@ -17,7 +49,7 @@ books.allow({
 	}
 });
 
-books.deny({
+Books.deny({
 	insert: function (userId, doc) {
 		return true;
 	},
