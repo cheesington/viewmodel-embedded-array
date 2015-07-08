@@ -8,29 +8,30 @@
 
 
 <template name="Books">
-	Books:
 	{{#each books}}
 		{{> Book}}
 	{{/each}}
 </template>
 
 <template name="Book">
-	Name: <input type="text" data-bind="value: name" /> <div data-bind="text: name" ></div>
-	Authors:
-	{{#each authors}}
-		{{> Author}}
-	{{/each}}
-	<button data-bind="click: pushAuthor" >Push</button>
-	<button data-bind="click: addLetter" >Add</button>
+	<div>
+		Name: <input type="text" data-bind="value: name" /> <span data-bind="text: name" ></span>
+		<ul>
+		{{#each authors}}
+			<li>{{> Author}}</li>
+		{{/each}}
+	</ul>
+		<button data-bind="click: save" >Save</button>
+	</div>
 </template>
 
 <template name="Author">
 	<div>
 		First Name: <input type="text" data-bind="value: firstName" />
-		<div data-bind="text: firstName" > </div>
+		<span data-bind="text: firstName" > </span>
 	</div>
 	<div>
 		Last Name: <input type="text" data-bind="value: lastName" />
-		<div  data-bind="text: lastName"></div>
+		<span  data-bind="text: lastName"></span>
 	</div>
 </template>
