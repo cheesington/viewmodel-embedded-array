@@ -6,33 +6,17 @@ Template.Books.helpers({
 });
 
 Template.Book.viewmodel(function(data) { 
-	return "book" + data._id;
-},
-function(data) { 
 	return {
-		book: function() {
-			return Books.findOne(data._id);
+		autorun: function() {
+			this.extend(Books.findOne(data._id));
+		},
+		save: function() {
+			console.log("this.toJS():");
+			console.log(this.toJS()); 
 		},
 	};
 },
-{
-	nameVal: '',
-	name: function(name) { 
-		if (name) {
-			this.nameVal(name === this.book().name ? '' : name);
-		} else {
-			return this.nameVal() || this.book().name;
-		}
-	},
-	submit: function() {
-		Books.update(this.book()._id, {$set: this.book()});
-	},
-	authors: function() { 
-		return book().authors;
-	},
-},
-[]);
-
+['authors']);
 
 Template.Author.viewmodel(function(data) {
 	return data;

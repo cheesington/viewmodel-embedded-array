@@ -4,61 +4,30 @@
 Meteor.startup(function() {
 
 	if (Books.find().count() === 0) { 
-		var book = {
+
+		Books.insert({
 			name: "Rocking Out Vol 1",
 			authors: [{
-				firstName: "Svon",
-				lastName: "Jovi",
+				firstName: "Alice",
+				lastName: "Cooper",
 			},
 			{
-				firstName: "Ben",
-				lastName: "Jovi",
+				firstName: "Elton",
+				lastName: "John",
 			}]
-		};
+		});
 
-		Books.insert(book);
-		book = {
+		Books.insert({
 			name: "Rocking Out Vol 2",
 			authors: [{
-				firstName: "Pete",
-				lastName: "Seeeeeeeeger",
+				firstName: "Jack",
+				lastName: "Black",
 			},
 			{
 				firstName: "Phil",
 				lastName: "Collins",
 			}]
-		};
-
-		Books.insert(book);
+		});
 	}
 });
 
-// Security
-
-Books.allow({
-	insert: function (userId, doc) {
-		return false;
-	},
-
-	update: function (userId, doc, fieldNames, modifier) {
-		return false;
-	},
-
-	remove: function (userId, doc) {
-		return false;
-	}
-});
-
-Books.deny({
-	insert: function (userId, doc) {
-		return true;
-	},
-
-	update: function (userId, doc, fieldNames, modifier) {
-		return true;
-	},
-
-	remove: function (userId, doc) {
-		return true;
-	}
-});

@@ -3,34 +3,25 @@
 </head>
 
 <body>
-	<h1>Welcome to Meteor!</h1>
-
 	{{> Books}}
 </body>
 
 
 <template name="Books">
 	Books:
-	<ul>
-		{{#each books}}
-			<li>
-				{{> Book}}
-			</li>
-		{{/each}}
-	</ul>
+	{{#each books}}
+		{{> Book}}
+	{{/each}}
 </template>
 
 <template name="Book">
-	Name: <input type="text" data-bind="value: name" /> <div data-bind="text: nameVal" ></div>
+	Name: <input type="text" data-bind="value: name" /> <div data-bind="text: name" ></div>
 	Authors:
-	<ul>
-		{{#each authors}}
-			<li>
-				{{> Author}}
-			</li>
-		{{/each}}
-	</ul>
-	<button data-bind="click: submit" >Save</button>
+	{{#each authors}}
+		{{> Author}}
+	{{/each}}
+	<button data-bind="click: pushAuthor" >Push</button>
+	<button data-bind="click: addLetter" >Add</button>
 </template>
 
 <template name="Author">
